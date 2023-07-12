@@ -57,4 +57,19 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>OrderCalculations<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void cost_should_be_zero_when_nothing_is_selected_from_menu(){
+        List<String> orderItem = new ArrayList();
+        assertEquals(0,restaurant.orderCostCalculation(orderItem));
+    }
+    @Test
+    public void cost_should_be_price_of_One_item_when_only_that_item_is_selected_from_menu(){
+        List<String> orderItem = new ArrayList();
+        orderItem.add("Vegetable lasagne");
+        assertEquals( 269,restaurant.orderCostCalculation(orderItem));
+    }
+
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<OrderCalculations>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<
 }
