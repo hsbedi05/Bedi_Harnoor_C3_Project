@@ -18,7 +18,7 @@ public class Restaurant {
     }
 
     public boolean isRestaurantOpen() {
-        return true;
+        //return true;
         //DELETE ABOVE STATEMENT AND WRITE CODE HERE
         if(getCurrentTime().isAfter(openingTime) && getCurrentTime().isBefore(closingTime)) {
             return true;
@@ -31,8 +31,9 @@ public class Restaurant {
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
     public List<Item> getMenu() {
-        return menu;
+        //return null;
         //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE
+        return menu;
     }
 
     private Item findItemByName(String itemName){
@@ -47,7 +48,7 @@ public class Restaurant {
         Item newItem = new Item(name,price);
         menu.add(newItem);
     }
-    
+
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
         Item itemToBeRemoved = findItemByName(itemName);
@@ -68,5 +69,12 @@ public class Restaurant {
     public String getName() {
         return name;
     }
-
+    public int orderCostCalculation( List<String> orderItem ){
+        int totalCost = 0;
+        for(String itemName: orderItem){
+            Item myitem = findItemByName(itemName);
+            totalCost += myitem.getPrice();
+        }
+        return totalCost;
+    }
 }
